@@ -22,3 +22,7 @@ Future Features(TM)
 ===================
 There may not be any useful updates, but overlays would be a nice feature to have. Along with measurement of area and
 such.
+
+Why the terrible coloring?
+==========================
+At such an early stage in development, it is too early to worry about matching colors and adding custom fonts and such. 
