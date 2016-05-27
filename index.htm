@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GIS2D</title>
+		<script src="config.js" type="application/javascript"></script>
+		<script src="gis2d.js" type="application/javascript"></script>
+		<script src="poscontrol.js" type="application/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="gis2d.css"/>
+		<script>
+		// gis2d settings
+		var toggleMeasureVar = false;
+		var toggleIdentifyVar = false;
+		var zoomLevel = 1;
+		</script>
+	</head>
+	<body>
+		<script>
+		document.write("<img id='gis2d-map' src='" + mapLoc + "'></img>");
+		function toggleMeasure() { 
+			if ( toggleMeasureVar == true ) {
+				toggleMeasureVar = false;
+				document.getElementById('state-measure').innerHTML = "off";
+				} else {
+				toggleMeasureVar = true;
+				document.getElementById('state-measure').innerHTML = "on";
+				}
+			setTimeout(function(){measure.clear()},5); // delay
+			}
+		function toggleIdentify() {
+			if ( toggleIdentifyVar == true ) {
+				toggleIdentifyVar = false;
+				document.getElementById('state-identify').innerHTML = "off";
+				} else {
+				toggleIdentifyVar = true;
+				document.getElementById('state-identify').innerHTML = "on";
+				}
+			}
+		</script>
+		<div id="zoom" onclick="zoom();">+</div><div id="pan" onclick="pan();">-</div>
+		<div id="toolset">
+			<a id="toggle-measure" href="#" onclick="toggleMeasure();">[measure - <span id="state-measure">off</span>]</a>
+			<a id="toggle-identify" href="#" onclick="toggleIdentify();">[identify - <span id="state-identify">off</span>]</a>
+			<button id="clear-measure" onclick="measure.btnClear();">clear</button>
+		</div>
+		<span id="start"></span><span id="point0"></span><span id="point1"></span><span id="point2"></span><span id="point3"></span><span id="point4"></span>
+		<span id="end"></span>
+		<div id="bottomleft">
+			<span id="coords"></span>
+			<span id="zoom_multiple">1.0</span> <!-- default --><br/>
+			<span id="measure">0cm</span>
+			<select id="units">
+				<option value="cm">centimeters</option>
+				<option value="in">inches</option>
+				<option value="m">meters</option>
+			</select>
+			<div id="identify"></div>
+		</div>
+		<hr id="barrier"/>
+		<script>
+		document.onmousemove = function() {
+			document.getElementById('coords').innerHTML = Math.round(event.clientX - 5) + ',' + Math.round(event.clientY - 61);
+			}
+		</script>
+	</body>
+	<footer>
+		<script src="zoom.js" type="application/javascript"></script>
+	</footer>
+</html>

@@ -1,0 +1,49 @@
+#bottomleft, #toggle-measure, #toggle-identify, #zoom, #pan { 
+	position: absolute;
+	top: 2%;
+	}
+#bottomleft {
+	left: 1%;
+	}
+#toggle-measure {
+	left: 20%;
+	}
+#toggle-identify {
+	left: 27%;
+	}
+#clear-measure {
+	position: absolute;
+	top: 5%;
+	left: 25.1%;
+	}
+#zoom {
+	left: 94%;
+	top: 2%; 
+	font-size: 18pt;
+	padding: 3px;
+	}
+#pan {
+	left: 96%;
+	top: 2%;
+	font-size: 18pt;
+	padding: 3px;
+	}
+body { 
+	background-color: beige;
+	}
+#bottomleft, #zoom, #pan{
+	display: block;
+	background-color: whitesmoke;
+	border: 2px solid orange;
+	}
+#barrier {
+	position: absolute;
+	top: 7.5%;
+	width: 93%;
+	margin-left: 25px;
+	margin-right: 25px;
+	z-index: 2;
+	}
+#gis2d-map {
+	margin-top: 4%;
+	}
