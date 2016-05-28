@@ -1,7 +1,7 @@
 var x = 0, y = 0, measuring = false;
 document.onclick = function () { 
-	x = event.clientX || e.clientX;
-	y = event.clientY || e.clientY;
+	x = event.clientX;
+	y = event.clientY;
 	if ( toggleIdentifyVar == true ) {
 		loc = identify.byCoords(x,y);
 		identify.output(loc);

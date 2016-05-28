@@ -47,3 +47,6 @@ body {
 #gis2d-map {
 	margin-top: 4%;
 	}
+#measureHidden {
+	display: none;
+	}

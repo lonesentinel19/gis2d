@@ -7,6 +7,22 @@
 		<script src="poscontrol.js" type="application/javascript"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 		<link rel="stylesheet" href="gis2d.css"/>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=1040">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+		<meta name="keywords" content="gis2d, gis, javascript gis, gis js, gis 2d">
+		<meta itemprop="description" name="description" content="gis2d is a basic JavaScript 2D geographic information system.">
+		<link rel="image_src" href="https://d3js.org/preview.png">
+
+		<meta property="og:type" content="article"/>
+		<meta property="og:title" content="gis2d - JavaScript GIS"/>
+		<meta property="og:description" content="gis2d is a basic JavaScript 2D geographic information system.">
+
+		<meta name="author" content="lonesentinel19">
+		
 		<script>
 		// gis2d settings
 		var toggleMeasureVar = false;
@@ -14,6 +30,7 @@
 		var zoomLevel = 1;
 		</script>
 	</head>
+	
 	<body>
 		<script>
 		document.write("<img id='gis2d-map' src='" + mapLoc + "'></img>");
@@ -37,6 +54,7 @@
 				}
 			}
 		</script>
+		<!-- <ui> -->
 		<div id="zoom" onclick="zoom();">+</div><div id="pan" onclick="pan();">-</div>
 		<div id="toolset">
 			<a id="toggle-measure" href="#" onclick="toggleMeasure();">[measure - <span id="state-measure">off</span>]</a>
@@ -49,7 +67,9 @@
 			<span id="coords"></span>
 			<span id="zoom_multiple">1.0</span> <!-- default --><br/>
 			<span id="measure">0cm</span>
-			<select id="units">
+			<div id="measureHidden"></div>
+			<select id="units" onchange="if (this.selectedIndex) measure.dropdownSwitch();">
+				<option value="cm"></option>
 				<option value="cm">centimeters</option>
 				<option value="in">inches</option>
 				<option value="m">meters</option>
@@ -57,13 +77,15 @@
 			<div id="identify"></div>
 		</div>
 		<hr id="barrier"/>
+		<!-- </ui> -->
+		
 		<script>
-		document.onmousemove = function() {
-			document.getElementById('coords').innerHTML = Math.round(event.clientX - 5) + ',' + Math.round(event.clientY - 61);
-			}
+		document.onmousemove=function(){document.getElementById('coords').innerHTML = Math.round(event.clientX - 5) + ',' + Math.round(event.clientY - 61);}
 		</script>
 	</body>
+	
 	<footer>
 		<script src="zoom.js" type="application/javascript"></script>
 	</footer>
+	
 </html>

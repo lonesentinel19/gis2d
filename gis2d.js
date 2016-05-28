@@ -38,21 +38,27 @@ measure.endMeasure = function(x,y) {
 	document.getElementById('end').style = "position: absolute; z-index:2;top: " + (y-10) + "px;left:" + (x-2) + "px";
 	$("#measure").text("");
 	// CONVERSION FACTORS //
-	switch ( $("#units").val() ) {
+	finalMeasurement = measure.convert(measure1.total, $("#units").val());
+	$("#measure").text(finalMeasurement);
+	$("#measureHidden").text(measure1.total);
+	}
+	
+measure.convert = function(val, unit) {
+	switch ( unit ) {
 		case 'in':
-			finalMeasurement = (measure1.total*scale)*0.3937 + "in";
+			finalMeasurement = (val*scale)*0.3937 + "in";
 			break;
 		case 'cm':
-			finalMeasurement = (measure1.total*scale) + "cm";
+			finalMeasurement = (val*scale) + "cm";
 			break;
 		case 'm':
-			finalMeasurement = (measure1.total*scale)*10 + "m";
+			finalMeasurement = (val*scale)/10 + "m";
 			break;
 		default:
-			finalMeasurement = (measure1.total*scale) + "cm";
+			finalMeasurement = (val*scale) + "cm";
 			break;
 		}
-	document.getElementById('measure').innerHTML = finalMeasurement;
+		return finalMeasurement;
 	}
 	
 measure.clear = function() {
@@ -73,6 +79,10 @@ measure.btnClear = function() {
 	toggleMeasure();
 	}
 
+measure.dropdownSwitch = function(x) {
+	$("#measure").text(measure.convert($("#measureHidden").text(), $("#units").val()));
+	}
+	
 // IDENTIFY
 // check and see if (x,y) are in boundaries specified in config for locations
 identify.byCoords = function(x,y) {
@@ -89,6 +99,7 @@ identify.byCoords = function(x,y) {
 		}
 	}
 	
+/* Fetches description of location */
 identify.desc = function(data) {
 	return locations[data][4];
 	}
