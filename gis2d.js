@@ -105,6 +105,7 @@ identify.desc = function(data) {
 	}
 	
 identify.output = function(data) { 
+	$("#units").setAttribute("style", "display: none");
 	document.getElementById('measure').innerHTML = ""; // clear measure data
 	if ( typeof(data) == 'undefined' ) {
 		document.getElementById('identify').innerHTML = "unknown";

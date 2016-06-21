@@ -30,7 +30,6 @@
 		var zoomLevel = 1;
 		</script>
 	</head>
-	
 	<body>
 		<script>
 		document.write("<img id='gis2d-map' src='" + mapLoc + "'></img>");
@@ -69,13 +68,29 @@
 			<span id="measure">0cm</span>
 			<div id="measureHidden"></div>
 			<select id="units" onchange="if (this.selectedIndex) measure.dropdownSwitch();">
-				<option value="cm"></option>
+				<option value="cm"></option> <!-- fix bug, this is default -->
 				<option value="cm">centimeters</option>
 				<option value="in">inches</option>
 				<option value="m">meters</option>
 			</select>
 			<div id="identify"></div>
 		</div>
+		
+		<!-- overlays -->
+		<div id="overlays">
+			<h3>Layers</h3>
+			<div id="layer-selection">
+				<script>
+				$(document).ready(function() {
+					$("#layer-selection").append(overlay.out());
+				});
+				</script>
+			</div>
+		</div>
+		<div id="overlayUI">
+			<button id="overlay_btn" onclick="overlay.click();" value="overlays">toggle layers</button>
+		</div>
+		
 		<hr id="barrier"/>
 		<!-- </ui> -->
 		
@@ -85,6 +100,7 @@
 	</body>
 	
 	<footer>
+		<script src="js/overlay.js" type="application/javascript"></script>
 		<script src="zoom.js" type="application/javascript"></script>
 	</footer>
 	
