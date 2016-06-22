@@ -6,11 +6,13 @@ measure1 = {};
 
 measure.beginMeasure = function(x,y) {
 	measure1.x = x;
+	$("#identify").hide(); // don't show id screen
 	// run from 
 	document.getElementById('start').innerHTML = "&#9679;";
 	document.getElementById('start').style = "position: absolute; z-index:2;top: " + (y-10) + "px;left:" + (x-2) + "px";
 	measure1.y = y;
 	measure1.total = 0;
+	points = points+1;
 	}
 	
 measure.addPoint = function(x,y) {
@@ -25,8 +27,11 @@ measure.addPoint = function(x,y) {
 			squares = Math.pow(f,2)+Math.pow(changeY,2);
 			f = Math.sqrt(squares); // for diagonal measuring
 			} 	
-		document.getElementById('point' + points).innerHTML = "&#9679;";
-		document.getElementById('point' + points).style = "position: absolute; z-index:2;top: " + (y-10) + "px;left:" + (x-2) + "px";		
+		jQuery('<span/>', {
+			id: 'point' + points,
+			style: "position: absolute; z-index:2;top: " + (y-10) + "px;left:" + (x-2) + "px",
+			html: '&#9679'
+			}).appendTo('body');
 		measure1.total = measure1.total + f;
 		points = points + 1;
 		}
@@ -34,7 +39,8 @@ measure.addPoint = function(x,y) {
 	
 measure.endMeasure = function(x,y) { 
 	var finalMeasurement;
-	document.getElementById('end').innerHTML = "&#9679;";
+	
+	$("#end").html("&#9679");
 	document.getElementById('end').style = "position: absolute; z-index:2;top: " + (y-10) + "px;left:" + (x-2) + "px";
 	$("#measure").text("");
 	// CONVERSION FACTORS //
@@ -67,8 +73,9 @@ measure.clear = function() {
 	measuring = false;
 	$("#start").text("");
 	$("#end").text("");
+	$("#measure").text("0cm");
 	for ( var i = 0; i < points; i++ ) {
-		$("#point" + i).text("");
+		$("#point" + i).remove();
 		}
 	points = 0;
 	}
@@ -105,7 +112,7 @@ identify.desc = function(data) {
 	}
 	
 identify.output = function(data) { 
-	$("#units").setAttribute("style", "display: none");
+	$("#units").attr("style", "display: none");
 	document.getElementById('measure').innerHTML = ""; // clear measure data
 	if ( typeof(data) == 'undefined' ) {
 		document.getElementById('identify').innerHTML = "unknown";

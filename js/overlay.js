@@ -19,6 +19,20 @@ overlay.select = function(that) {
 		}
 	}
 	
+overlay.showLayer = function(layer) {
+	jQuery('<img/>', {
+		'id': layer,
+		'class': 'layers',
+		'src': layers[layer][1],
+		'height': height + 'px',
+		'width': width + 'px'
+		}).appendTo('#layers');
+	}
+	
+overlay.hideLayer = function(layer) {
+	$("#" + layer).hide();
+	}
+	
 overlay.out = function() {
 	var options = "";
 	for ( layer in layers ) {

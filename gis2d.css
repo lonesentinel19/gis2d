@@ -68,3 +68,8 @@ body {
 	padding-left: 5px;
 	padding-right: 5px;
 	}
+.layers {
+	position: absolute;
+	top:9.3%;
+	left:0.6%;
+}

@@ -14,6 +14,9 @@ function zoom() {
 		console.log(zoomLevel);
 		scale = scaleOriginal / zoomLevel;
 		document.getElementById('gis2d-map').style.zoom = zoomLevel;
+		$(".layers").each(function() {
+			$(this).attr('style', 'zoom: ' + zoomLevel);
+			});
 		document.getElementById('zoom_multiple').innerHTML = zoomLevel;
 		}
 	}
@@ -24,6 +27,9 @@ function pan() {
 		zoomLevel = zoomLevel.toFixed(2);
 		scale = scaleOriginal / zoomLevel;
 		document.getElementById('gis2d-map').style.zoom = zoomLevel;
+		$(".layers").each(function() {
+			$(this).attr('style', 'zoom: ' + zoomLevel);
+			});
 		document.getElementById('zoom_multiple').innerHTML = zoomLevel;
 		}
 	}

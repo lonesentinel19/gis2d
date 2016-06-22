@@ -30,9 +30,14 @@
 		var zoomLevel = 1;
 		</script>
 	</head>
-	<body>
+	<body>		
+	<div id="layers">
 		<script>
 		document.write("<img id='gis2d-map' src='" + mapLoc + "'></img>");
+		
+		</script>
+	</div>
+	<script>
 		function toggleMeasure() { 
 			if ( toggleMeasureVar == true ) {
 				toggleMeasureVar = false;
@@ -60,7 +65,7 @@
 			<a id="toggle-identify" href="#" onclick="toggleIdentify();">[identify - <span id="state-identify">off</span>]</a>
 			<button id="clear-measure" onclick="measure.btnClear();">clear</button>
 		</div>
-		<span id="start"></span><span id="point0"></span><span id="point1"></span><span id="point2"></span><span id="point3"></span><span id="point4"></span>
+		<span id="start"></span>
 		<span id="end"></span>
 		<div id="bottomleft">
 			<span id="coords"></span>
@@ -75,7 +80,7 @@
 			</select>
 			<div id="identify"></div>
 		</div>
-		
+		<div id="pts"></div>
 		<!-- overlays -->
 		<div id="overlays">
 			<h3>Layers</h3>
@@ -90,7 +95,6 @@
 		<div id="overlayUI">
 			<button id="overlay_btn" onclick="overlay.click();" value="overlays">toggle layers</button>
 		</div>
-		
 		<hr id="barrier"/>
 		<!-- </ui> -->
 		
