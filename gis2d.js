@@ -2,6 +2,7 @@ var measure = {};
 var identify = {};
 var toggleMeasure = false;
 var points = 0;
+var currentUnit = "cm";
 measure1 = {};
 
 measure.beginMeasure = function(x,y) {
@@ -58,12 +59,16 @@ measure.convert = function(val, unit) {
 			finalMeasurement = (val*scale) + "cm";
 			break;
 		case 'm':
-			finalMeasurement = (val*scale)/10 + "m";
+			finalMeasurement = (val*scale)/100 + "m";
+			break;
+		case 'ft':
+			finalMeasurement = (val*scale)*0.032808 + "ft";
 			break;
 		default:
 			finalMeasurement = (val*scale) + "cm";
 			break;
 		}
+		var currentUnit = unit;
 		return finalMeasurement;
 	}
 	
@@ -73,7 +78,7 @@ measure.clear = function() {
 	measuring = false;
 	$("#start").text("");
 	$("#end").text("");
-	$("#measure").text("0cm");
+	$("#measure").text("0" + currentUnit);
 	for ( var i = 0; i < points; i++ ) {
 		$("#point" + i).remove();
 		}
