@@ -44,6 +44,9 @@
 				document.getElementById('state-measure').innerHTML = "off";
 				} else {
 				toggleMeasureVar = true;
+				if ( toggleIdentifyVar = true ) {
+					toggleIdentify();
+					}
 				document.getElementById('state-measure').innerHTML = "on";
 				}
 			setTimeout(function(){measure.clear()},5); // delay
@@ -54,6 +57,9 @@
 				document.getElementById('state-identify').innerHTML = "off";
 				} else {
 				toggleIdentifyVar = true;
+				if ( toggleMeasureVar = true ) {
+					toggleMeasure(); // toggle
+					}
 				document.getElementById('state-identify').innerHTML = "on";
 				}
 			}
